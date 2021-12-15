@@ -1,0 +1,52 @@
+﻿@model RegistroViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h1>Registro</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Registro">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Password" class="form-label"></label>
+                <div class="input-group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btncheck1"><i class="bi bi-eye"></i></label>
+                    <input asp-for="Password" class="form-control" id="textPassword" type="text" />
+                </div>
+                 <span id="Password" asp-validation-for="Password" class="text-danger"></span>
+
+                
+            </div>
+
+            <button class="btn-primary btn">Registrarse</button>
+            <a class="btn btn-success" asp-action="login">Ir a Login</a>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript"> 
+        $(document).ready(function () {  
+            //CheckBox Show Password  
+            $('#btncheck1').click(function () { 
+                $('#textPassword').attr('type', $(this).is(':checked') ? 'text' : 'password');
+            });  
+        });  
+    </script>  
+}

@@ -1,0 +1,21 @@
+﻿using MiPresupuesto.Validations;
+using System.ComponentModel.DataAnnotations;
+
+namespace MiPresupuesto.Models
+{
+    public class Cuenta
+    {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(maximumLength: 50)]
+        [PrimerLetraMayus]
+        public string Nombre { get; set; }
+        [Display(Name = "Tipo Cuenta")]
+        public int TipoCuentaId { get; set; }
+        public float Balance { get; set; }
+        [StringLength(maximumLength: 1000)]
+        public string Descripcion { get; set; }
+        public string TipoCuenta { get; set; }
+    }
+}
